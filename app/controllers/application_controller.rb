@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # 請參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   # https://github.com/plataformatec/devise#strong-parameters	   # https://github.com/plataformatec/devise#strong-parameters
   # 注意有 sign_up 和 account_update 兩種參數要處理
- # add new permitted parameter to devise filter before add parameters to User
+  # add new permitted parameter to devise filter before add parameters to User
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # Devise 客製化屬性

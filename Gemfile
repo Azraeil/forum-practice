@@ -62,3 +62,7 @@ gem 'sprockets-rails'
 gem 'bootstrap', '~> 4.0.0'
 # Use jquery for bootstrap javascript
 gem 'jquery-rails'
+
+# ‘unirest’ is dependency of ‘filestack-rails’. You need to specify it in Gemfile. Otherwise, ‘filestack-rails’ will automatically install a insecure old version.
+gem "unirest", git: "https://github.com/Kong/unirest-ruby"
+gem 'filestack-rails', '~> 3.1'
