@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>修改個人資料</h1>
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "使用者名稱" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :introduction, "自我介紹" %>
+      <%= f.text_area :introduction, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :avatar, "大頭貼" %><br>
+      <%= filestack_image @user.avatar, transform: filestack_transform.resize(width:150, height:150) if @user.avatar %>
+      <%= f.filestack_field :avatar, '選擇你的大頭貼照片',
+      pickerOptions: {
+        accept: 'image/*',
+        fromSources: ['local_file_system', 'url'],
+        maxFiles: 1,
+        maxSize: 10240000
+        } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <%= link_to "Cancel", user_path(@user.id), class: "btn btn-light" %>
+    </div>
+  <% end %>
+</div>

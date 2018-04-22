@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "posts#index"
 
   # 使用者
-  resources :users, only: [:edit, :show] do
+  resources :users, only: [:edit, :update, :show] do
 
   end
 
