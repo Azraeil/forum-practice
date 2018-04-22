@@ -10,7 +10,7 @@ admin = User.new(
   email: "admin@test.com",
   password: "123123",
   introduction: "introduction",#FFaker::Lorem::sentence(3),
-  avatar: "file",
+  avatar: "https://picsum.photos/300/300/?random",
   role: "Admin"
 )
 
@@ -21,7 +21,7 @@ admin = User.new(
   email: "admin@example.com",
   password: "12345678",
   introduction: "introduction",#FFaker::Lorem::sentence(3),
-  avatar: "file",
+  avatar: "https://picsum.photos/300/300/?random",
   role: "Admin"
 )
 
