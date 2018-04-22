@@ -21,3 +21,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore temp file for git
+temp01
