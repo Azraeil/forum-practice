@@ -1,0 +1,7 @@
+<%= @user.name %>
+<br>
+<%= @user.introduction %>
+
+<% if current_user == @user %>
+  <%= link_to "Edit", edit_user_path(@user.id), class:"btn btn-primary" %>
+<% end %>

@@ -55,3 +55,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # for user login
 gem 'devise'
+
+# Use sprockets
+gem 'sprockets-rails'
+# Use Bootstrap for beautiful view
+gem 'bootstrap', '~> 4.0.0'
+# Use jquery for bootstrap javascript
+gem 'jquery-rails'

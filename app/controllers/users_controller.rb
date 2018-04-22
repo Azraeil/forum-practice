@@ -4,6 +4,15 @@ class UsersController < ApplicationController
     # before action set_user
   end
 
+  def edit
+    if current_user == @user
+      # allow to edit
+
+    else
+      redirect_to user_path(@user.id)
+    end
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
