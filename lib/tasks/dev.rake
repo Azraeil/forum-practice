@@ -17,4 +17,21 @@ namespace :dev do
     end
     puts "Fake users created!"
   end
+
+  task fake_post: :environment do
+    # Post.destroy_all
+    10.times do |i|
+
+      post = Post.new(
+        title: "About " + FFaker::Name::first_name,
+        content: FFaker::Lorem::sentence(6),
+        who_can_see: "all"
+      )
+
+      post.save!
+      puts post.title
+    end
+    puts "Fake posts created!"
+  end
+
 end
