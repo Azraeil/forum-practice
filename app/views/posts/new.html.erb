@@ -22,7 +22,7 @@
       </legend>
       <div class="col-sm-10">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="all" checked>
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="all" checked="checked">
           <label class="form-check-label" for="gridRadios1">
             All
           </label>
@@ -34,7 +34,7 @@
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="myself" disabled>
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="myself">
           <label class="form-check-label" for="gridRadios3">
             Myself
           </label>
@@ -45,10 +45,12 @@
 
   <div class="form-group">
     <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+      <legend class="col-form-label col-sm-2 pt-0">
+        Category
+      </legend>
       <div class="col-sm-10">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="categoryRadios" id="categroyRadios1" value="" checked>
+          <input class="form-check-input" type="radio" name="categoryRadios" id="categroyRadios1" value="" checked="checked">
           <label class="form-check-label" for="categroyRadios1">
             Category1
           </label>
@@ -58,13 +60,11 @@
   </div>
 
   <div class="form-group">
-    <div class="">
-      Status :
-      <br>
-      <%= link_to "Save Draft#", root_path, class: "btn btn-primary" %>
+    Status :
+    <br>
+    <%= link_to "Save Draft#", root_path, class: "btn btn-primary" %>
 
-      <%= link_to "Submit#", root_path, class: "btn btn-primary" %>
-    </div>
+    <%= link_to "Submit#", root_path, class: "btn btn-primary" %>
   </div>
 <% end %>
 </div>
