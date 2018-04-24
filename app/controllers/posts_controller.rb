@@ -15,9 +15,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+    set_post_status()
+
     if @post.save
       flash[:notice] = "Post was created successfully."
-      redirect_to post_path(@post.id)
+      redirect_by_status()
     else
       flash[:alert] = "Post was failed to create."
       render :new
@@ -38,9 +40,11 @@ class PostsController < ApplicationController
   def update
     # set_post
 
+    set_post_status()
+
     if @post.update(post_params)
       flash[:notice] = "Post data was successfully updated."
-      redirect_to post_path(@post.id)
+      redirect_by_status()
     else
       flash.now[:alert] = "Post was failed to update!"
       render :edit
@@ -67,5 +71,28 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :file, :who_can_see)
+  end
+
+  def post_status_params
+    params.require(:commit)
+  end
+
+  def set_post_status
+    if post_status_params == "Submit"
+      @post.status = "publish"
+    else
+      @post.status = "draft"
+    end
+  end
+
+  def redirect_by_status
+    if @post.status == "publish"
+      # 文章發佈就導向到 posts#show
+      redirect_to post_path(@post.id)
+    else
+      # 文章存成草稿就導向到 users#draft
+      # dev 先導向到 users#show
+      redirect_to user_path(current_user.id)
+    end
   end
 end

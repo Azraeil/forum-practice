@@ -58,8 +58,8 @@
 <div class="form-group">
   Status :
   <br>
-  <%= link_to "Save Draft#", root_path, class: "btn btn-primary" %>
-
+  <%# posts controller 用 <input /> 的 value 值 來判斷是發佈文章或存成草稿 %>
+  <%= f.submit "Save Draft", class: "btn btn-info" %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 </div>
 <% end %>
