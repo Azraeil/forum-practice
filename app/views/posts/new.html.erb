@@ -22,22 +22,20 @@
       </legend>
       <div class="col-sm-10">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="all" checked="checked">
-          <label class="form-check-label" for="gridRadios1">
-            All
-          </label>
+          <!-- http://api.rubyonrails.org/v5.1/classes/ActionView/Helpers/FormHelper.html#method-i-radio_button -->
+          <%# radio_button(object_name, method, tag_value, options = {}) %>
+          <%= radio_button :post, :who_can_see, "all", { checked: true , class: "form-check-input" } %>
+          
+          <%# label_tag(name = nil, content_or_options = nil, options = nil, &block) %>
+          <%= label_tag :post_who_can_see_all, "All", class: "form-check-label" %>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="friend">
-          <label class="form-check-label" for="gridRadios2">
-            Friend
-          </label>
+          <%= radio_button :post, :who_can_see, "friend", {  class: "form-check-input" } %>
+          <%= label_tag :post_who_can_see_friend, "Friend", class: "form-check-label" %>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="myself">
-          <label class="form-check-label" for="gridRadios3">
-            Myself
-          </label>
+          <%= radio_button :post, :who_can_see, "myself", {  class: "form-check-input" } %>
+          <%= label_tag :post_who_can_see_myself, "Myself", class: "form-check-label" %>
         </div>
       </div>
     </div>
@@ -52,7 +50,7 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="categoryRadios" id="categroyRadios1" value="" checked="checked">
           <label class="form-check-label" for="categroyRadios1">
-            Category1
+            Category1#dev
           </label>
         </div>
       </div>
@@ -64,7 +62,7 @@
     <br>
     <%= link_to "Save Draft#", root_path, class: "btn btn-primary" %>
 
-    <%= link_to "Submit#", root_path, class: "btn btn-primary" %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   </div>
-<% end %>
+  <% end %>
 </div>
