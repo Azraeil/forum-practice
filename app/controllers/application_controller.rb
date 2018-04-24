@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   private
   # for admin authentication check
   def authenticate_admin
-    unles current_user.is_admin?
+    unless current_user.is_admin?
       flash[:alert] = "You CANNOT Pass!"
       redirect_to root_path
     end
