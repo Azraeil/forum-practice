@@ -17,9 +17,8 @@ Rails.application.routes.draw do
   ## 後台路由
   # 進入後台必須有管理員 (admin) 權限
   namespace :admin do
-    # 管理員 (admin) 在前台瀏覽文章時，可以刪除任何人的文章
-    resources :posts, only: [:index, :destroy]
-    # 後台可以瀏覽所有使用者清單
+    # GET /admin/users  後台可以瀏覽所有使用者清單
+    # POST  /admin/:id/user   可以更新使用者的身份
     resources :users, only: [:index, :update]
     # 後台可以 CRUD `文章的分類` (但不能刪除已經有被使用的分類)
     resources :categories
