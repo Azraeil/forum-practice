@@ -14,13 +14,13 @@
     </div>
 
     <div class="col-sm-9 border">
-      <%= filestack_image(@post.file, transform: filestack_transform.resize(width:300, height:200), class:"border") if @post.file %>
+      <%= filestack_image(@post.file, transform: filestack_transform.resize(width:300, height:200), class:"border") if @post.file != "" %>
       <br>
       <%= @post.content %>
-      
+
       <div class="clearfix"></div>
       <div class="float-right">
-        <button type="button" name="button">edit#dev</button>
+        <%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-info" %>
         <button type="button" name="button">delete#dev</button>
       </div>
     </div>
