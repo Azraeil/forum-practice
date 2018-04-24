@@ -1,1 +1,28 @@
-This is posts#show page.
+<div class="container">
+  <div class="row">
+    <h3><%= @post.title %></h3>
+
+    <div class="ml-auto">
+      <%= link_to "Collect#dev", root_path, class: "btn btn-primary" %>
+      <button type="button" name="button" class="btn btn-info">Comment#dev</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row border">
+    <div class="col-sm-3">
+      <!-- user.avatar, user.name, add_friend button -->
+    </div>
+
+    <div class="col-sm-9 border">
+      <%= filestack_image(@post.file, transform: filestack_transform.resize(width:300, height:200), class:"border") if @post.file %>
+      <br>
+      <%= @post.content %>
+      
+      <div class="clearfix"></div>
+      <div class="float-right">
+        <button type="button" name="button">edit#dev</button>
+        <button type="button" name="button">delete#dev</button>
+      </div>
+    </div>
+  </div>
+</div>
