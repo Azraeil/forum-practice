@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # 依需求，瀏覽論壇首頁時，不用登入
   skip_before_action :authenticate_user!, only: [:index]
 
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.last(10)
@@ -44,6 +44,19 @@ class PostsController < ApplicationController
     else
       flash.now[:alert] = "Post was failed to update!"
       render :edit
+    end
+  end
+
+  def destroy
+    # dev 只有作者才能刪除文章
+    # set_post
+
+    if @post.destroy
+      flash[:notice] = "Post was successfully deleted."
+      redirect_to user_path(current_user.id)
+    else
+      flash.now[:alert] = "Post was failed to delete!"
+      redirect_to post_path(@post.id)
     end
   end
 

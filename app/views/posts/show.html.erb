@@ -21,7 +21,7 @@
       <div class="clearfix"></div>
       <div class="float-right">
         <%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-info" %>
-        <button type="button" name="button">delete#dev</button>
+        <%= link_to "Delete", post_path(@post.id), method: :delete, data: {disable_with: "waiting.."}, class: "btn btn-danger" %>
       </div>
     </div>
   </div>
