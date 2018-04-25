@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   # 使用者
   resources :users, only: [:edit, :update, :show] do
-
+    member do
+      get :draft
+    end
   end
 
   # 文章

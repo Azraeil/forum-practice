@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user
   def show
     # set_user
+
+    @posts = @user.posts.where(status: "publish")
   end
 
   def edit
@@ -22,6 +24,10 @@ class UsersController < ApplicationController
       flash.now[:alert] = "User was failed to update!"
       render :edit
     end
+  end
+
+  def draft
+    @posts = @user.posts.where(status: "draft")
   end
 
   private

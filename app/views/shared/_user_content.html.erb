@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-3">
+    <%= filestack_image @user.avatar, transform: filestack_transform.resize(width:150, height:150) if @user.avatar %>
+    <h4><%= @user.name %></h4>
+  </div>
+
+  <div class="col-9">
+    <h5><%= @user.introduction %></h5>
+
+    <br>
+    <span  class="float-right">
+      <% if current_user == @user %>
+        <%= link_to "Edit", edit_user_path(@user.id), class:"btn btn-primary" %>
+      <% end %>
+    </span>
+  </div>
+</div>
