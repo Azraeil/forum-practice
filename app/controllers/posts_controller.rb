@@ -38,8 +38,9 @@ class PostsController < ApplicationController
     # set_post
 
     # 只有作者才能編輯文章
-    if current_user = @post.user
+    if current_user == @post.user
       # allow to edit
+
     else
       redirect_to post_path(@post.id)
     end
@@ -60,15 +61,17 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # dev 只有作者才能刪除文章
     # set_post
-
-    if @post.destroy
-      flash[:notice] = "Post was successfully deleted."
-      redirect_to user_path(current_user.id)
-    else
-      flash.now[:alert] = "Post was failed to delete!"
-      redirect_to post_path(@post.id)
+    
+    # 只有管理員或作者才能刪除文章
+    if current_user.role == "Admin" || current_user == @post.user
+      if @post.destroy
+        flash[:notice] = "Post was successfully deleted."
+        redirect_to user_path(current_user.id)
+      else
+        flash.now[:alert] = "Post was failed to delete!"
+        redirect_to post_path(@post.id)
+      end
     end
   end
 
