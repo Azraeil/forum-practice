@@ -70,7 +70,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :file, :who_can_see)
+    params.require(:post).permit(:title, :content, :file, :who_can_see, :category_id)
   end
 
   def post_status_params

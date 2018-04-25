@@ -25,7 +25,7 @@ namespace :dev do
       post = Post.new(
         title: "About " + FFaker::Name::first_name,
         content: FFaker::Lorem::sentence(6),
-        who_can_see: "all",
+        who_can_see: "All",
         # for FK category_id
         category: Category.all.sample
       )
