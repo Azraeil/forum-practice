@@ -48,8 +48,11 @@
       <% Category.all.each do |category| %>
         <div class="form-check form-check-inline">
           <%= radio_button :post, :category_id, category.id, { class: "form-check-input" } %>
-          <!-- label_tag 後面接的第一個參數不知道 -->
-          <%= label_tag :post_category_id , category.name, class: "form-check-label" %>
+
+          <label class="form-check-label"
+          for="<%= "post_category_id_" + category.id.to_s %>">
+            <%= category.name %>
+          </label>
         </div>
       <% end %>
     </div>
