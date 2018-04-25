@@ -10,4 +10,6 @@ class User < ApplicationRecord
       return true
    end
  end
+
+ has_many :posts
 end
