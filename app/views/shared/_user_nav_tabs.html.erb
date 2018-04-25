@@ -1,17 +1,20 @@
 <ul class="nav nav-tabs nav-justified">
   <li class="nav-item">
-    <%= link_to "Post", root_path, class:"nav-link active" %>
+    <%= link_to "Post#dev", root_path, class:"nav-link active" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Comment", root_path, class:"nav-link" %>
+    <%= link_to "Comment#dev", root_path, class:"nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Collect", root_path, class:"nav-link" %>
+    <%= link_to "Collect#dev", root_path, class:"nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Draft", root_path, class:"nav-link" %>
+    <%= link_to "Draft#dev", root_path, class:"nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Friend", root_path, class:"nav-link" %>
+    <%= link_to "Friend#dev", root_path, class:"nav-link" %>
   </li>
+  <!-- add active class example -->
+    <%#= link_to "User List", admin_users_path,
+    class: "nav-link #{ 'active' if current_page?(admin_users_path)}" %>
 </ul>

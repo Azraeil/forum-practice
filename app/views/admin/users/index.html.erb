@@ -1,9 +1,7 @@
 <div class="container">
   <div class="link">
-    <%= link_to "Category List", admin_categories_path, class:" btn btn-link" %>
-    <%= link_to "User List", admin_users_path, class:" btn btn-link" %>
+    <%= render partial: "admin/shared/admin_nav_tabs" %>
   </div>
-  <h2>User List</h2>
   <hr>
   <table class="table table-dark table-striped table-hover">
     <thead>
