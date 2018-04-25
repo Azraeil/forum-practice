@@ -11,8 +11,12 @@
   <div class="row border">
     <div class="col-sm-3">
       <!-- user.avatar, user.name, add_friend button -->
-      <%= filestack_image @post.user.avatar, transform: filestack_transform.resize(width:150, height:150), class:"text-center" if @post.user.avatar %>
-      <h4><%= @post.user.name %></h4>
+      <%= link_to user_path(@post.user.id) do %>
+        <%= filestack_image @post.user.avatar, transform: filestack_transform.resize(width:150, height:150), class:"text-center" if @post.user.avatar %>
+        <div class="text-center">
+          <%= @post.user.name %>
+        </div>
+      <% end %>
     </div>
 
     <div class="col-sm-9 border">
@@ -22,8 +26,7 @@
 
       <div class="clearfix"></div>
       <div class="float-right">
-        <%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-info" if current_user == @post.user %>
-        <%= link_to "Delete", post_path(@post.id), method: :delete, data: {disable_with: "waiting.."}, class: "btn btn-danger" if current_user.role == "Admin" || current_user == @post.user %>
+        <%= render partial: "shared/post_button", locals: {post: @post} %>
       </div>
     </div>
   </div>
