@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Create two admin users
 admin = User.new(
   name: "Administrator",
   email: "admin@test.com",
@@ -28,3 +30,20 @@ admin = User.new(
 admin.save!
 
 puts "admin account created!"
+
+# Create Category
+Category.destroy_all
+
+category_list = [
+  { name: "Category1" },
+  { name: "Category2" },
+  { name: "Category3" },
+  { name: "Category4" },
+  { name: "Category5" }
+]
+
+category_list.each do |c|
+  Category.create(name: c[:name])
+end
+
+puts "Default category seed data created!"
