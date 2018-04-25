@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # 文章
   resources :posts
 
+  # posts#index 的文章分類按鈕
+  resources :categories, only: [:show]
+
   # 好友關係
 
   ## 後台路由
