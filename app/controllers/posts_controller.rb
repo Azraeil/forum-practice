@@ -6,6 +6,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.last(10)
+
+    # 顯示文章分類按鈕
+    @categories = Category.all
   end
 
   def new

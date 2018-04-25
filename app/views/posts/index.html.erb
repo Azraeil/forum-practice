@@ -1,26 +1,5 @@
 <div class="container">
   <h1>My Forum</h1>
   <hr>
-  <table class="table table-dark table-striped table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Replies count</th>
-        <th scope="col-md-auto">Title</th>
-        <th scope="col">Last replied at</th>
-        <th scope="col">Viewed count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <!-- <th scope="row">1</th> -->
-          <th>#Replies_count</th>
-          <td><%= post.title %></td>
-          <td>#last_replt_time</td>
-          <td>#viewed_count</td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+  <%= render partial: "shared/post_content" %>
 </div>
