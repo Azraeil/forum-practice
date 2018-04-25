@@ -19,6 +19,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     set_post_status()
+    @post.user_id = current_user.id
 
     if @post.save
       flash[:notice] = "Post was created successfully."
@@ -36,8 +37,12 @@ class PostsController < ApplicationController
   def edit
     # set_post
 
-    #dev 只有作者才能編輯文章
-
+    # 只有作者才能編輯文章
+    if current_user = @post.user
+      # allow to edit
+    else
+      redirect_to post_path(@post.id)
+    end
   end
 
   def update

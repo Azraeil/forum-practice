@@ -27,7 +27,10 @@ namespace :dev do
         content: FFaker::Lorem::sentence(6),
         who_can_see: "All",
         # for FK category_id
-        category: Category.all.sample
+        category_id: Category.all.sample.id,
+
+        # for FK user_id
+        user_id: User.all.sample.id
       )
 
       post.save!
