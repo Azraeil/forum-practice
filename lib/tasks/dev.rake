@@ -19,13 +19,15 @@ namespace :dev do
   end
 
   task fake_post: :environment do
-    # Post.destroy_all
+    Post.destroy_all
     10.times do |i|
 
       post = Post.new(
         title: "About " + FFaker::Name::first_name,
         content: FFaker::Lorem::sentence(6),
-        who_can_see: "all"
+        who_can_see: "all",
+        # for FK category_id
+        category: Category.all.sample
       )
 
       post.save!
