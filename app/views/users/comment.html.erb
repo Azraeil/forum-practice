@@ -1,0 +1,29 @@
+<div class="container">
+  <br>
+  <%= render partial: "shared/user_content" %>
+
+  <br>
+  <%= render partial: "shared/user_nav_tabs" %>
+
+  <br>
+
+  <!-- 回覆過的文章標題語回覆內容列表 -->
+  <% @comments.each do |comment| %>
+    <div class="">
+      <%= link_to comment.post.title, post_path(comment.post.id) %>
+    </div>
+
+    <div class="row">
+      <div class="col-9 border p-3">
+        <%= comment.content %>
+      </div>
+      <div class="col-3">
+        <% @post = comment.post %>
+        <%= render partial: "shared/comment_button", locals: {comment: comment} %>
+      </div>
+    </div>
+
+    <hr>
+  <% end %>
+
+</div>

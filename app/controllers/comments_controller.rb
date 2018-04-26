@@ -23,11 +23,11 @@ class CommentsController < ApplicationController
     # 只有管理員或作者才能刪除回覆
     if current_user.role == "Admin" || current_user == @comment.user
       if @comment.destroy
-        flash[:notice] = "Post was successfully deleted."
-        redirect_to post_path(@post.id)
+        flash[:notice] = "Comment was successfully deleted."
+        redirect_back(fallback_location: post_path(@post.id))
       else
-        flash.now[:alert] = "Post was failed to delete!"
-        redirect_to post_path(@post.id)
+        flash.now[:alert] = "Comment was failed to delete!"
+        redirect_back(fallback_location: post_path(@post.id))
       end
     end
   end

@@ -27,7 +27,14 @@ class UsersController < ApplicationController
   end
 
   def draft
+    # set_user
     @posts = @user.posts.where(status: "draft")
+  end
+
+  def comment
+    # set_user
+    
+    @comments = @user.comments
   end
 
   private
