@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
 
   # 文章
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create, :destroy, :edit, :update]
+  end
 
   # posts#index 的文章分類按鈕
   resources :categories, only: [:show]
