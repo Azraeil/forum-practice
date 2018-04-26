@@ -24,7 +24,7 @@ namespace :dev do
 
       post = Post.new(
         title: "About " + FFaker::Name::first_name,
-        content: FFaker::Lorem::sentence(6),
+        content: FFaker::Lorem::sentence,
         who_can_see: "All",
         # for FK category_id
         category_id: Category.all.sample.id,
@@ -44,7 +44,7 @@ namespace :dev do
 
     50.times do |i|
       comment = Comment.new(
-        content: FFaker::Lorem::sentence(6),
+        content: FFaker::Lorem::sentence,
         user_id: User.all.sample.id,
         post_id: Post.all.sample.id
       )

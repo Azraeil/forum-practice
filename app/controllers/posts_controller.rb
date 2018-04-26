@@ -31,6 +31,13 @@ class PostsController < ApplicationController
   end
 
   def show
+    # set_post
+
+    # 顯示回覆
+    @comments = @post.comments
+
+    # 新增回覆
+    @comment = Comment.new
 
   end
 
@@ -62,7 +69,7 @@ class PostsController < ApplicationController
 
   def destroy
     # set_post
-    
+
     # 只有管理員或作者才能刪除文章
     if current_user.role == "Admin" || current_user == @post.user
       if @post.destroy

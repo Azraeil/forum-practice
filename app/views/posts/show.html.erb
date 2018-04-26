@@ -8,26 +8,11 @@
     </div>
   </div>
   <hr>
-  <div class="row border">
-    <div class="col-sm-3">
-      <!-- user.avatar, user.name, add_friend button -->
-      <%= link_to user_path(@post.user.id) do %>
-        <%= filestack_image @post.user.avatar, transform: filestack_transform.resize(width:150, height:150), class:"text-center" if @post.user.avatar %>
-        <div class="text-center">
-          <%= @post.user.name %>
-        </div>
+    <%= render partial: "shared/post_content", locals: {post_object: @post} %>
+
+    <% if @comments != nil %>
+      <% @comments.each do |comment| %>
+        <%= render partial: "shared/post_content", locals: {post_object: comment} %>
       <% end %>
-    </div>
-
-    <div class="col-sm-9 border">
-      <%= filestack_image(@post.file, transform: filestack_transform.resize(width:300, height:200), class:"border") if @post.file != "" %>
-      <br>
-      <%= @post.content %>
-
-      <div class="clearfix"></div>
-      <div class="float-right">
-        <%= render partial: "shared/post_button", locals: {post: @post} %>
-      </div>
-    </div>
-  </div>
+    <% end %>
 </div>
