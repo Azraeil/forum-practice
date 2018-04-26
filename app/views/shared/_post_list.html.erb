@@ -27,7 +27,7 @@
       <tr>
         <!-- <th scope="row">1</th> -->
         <th>#Replies_count</th>
-        <td><%= post.title %></td>
+        <td><%= link_to post.title, post_path(post.id) %></td>
         <td>#last_replt_time</td>
         <td>#viewed_count</td>
       </tr>

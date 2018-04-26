@@ -12,6 +12,7 @@
   <%= render partial: "shared/post_content", locals: {post_object: @post} %>
 
   <% if @comments != nil %>
+    <h4>Comments</h4>
     <% @comments.each do |comment| %>
       <%= render partial: "shared/comment_content", locals: {comment: comment} %>
     <% end %>
@@ -20,11 +21,11 @@
   <!-- 輸入回覆內容 -->
   <%= form_for [@post, @comment] do |f| %>
     <div class="form-group">
-      <%= f.text_area :content, placeholder: "Add content?", class: "form-control" %>
+      <%= f.text_area :content, placeholder: "Add some comment?", class: "form-control" %>
     </div>
 
     <div class="form-group float-right">
-      <%= f.submit "Reply", class: "btn btn-primary" %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
       <%= f.button "Clear", type: :reset, class: "btn btn-light" %>
     </div>
   <% end %>
