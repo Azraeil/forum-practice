@@ -69,3 +69,6 @@ gem 'filestack-rails', '~> 3.1'
 
 # for fake data
 gem 'ffaker'
+
+# for paginate
+gem 'kaminari'

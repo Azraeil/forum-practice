@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.last(10)
+    @posts = Post.where(status: "publish").page(params[:page]).per(20)
 
     # 顯示文章分類按鈕
     @categories = Category.all
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     # set_post
 
     # 顯示回覆
-    @comments = @post.comments
+    @comments = @post.comments.page(params[:page]).per(20)
 
     # 新增回覆
     @comment = Comment.new

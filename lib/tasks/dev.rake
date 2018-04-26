@@ -44,11 +44,11 @@ namespace :dev do
   task fake_comment: :environment do
     Comment.destroy_all
 
-    80.times do |i|
+    100.times do |i|
       comment = Comment.new(
         content: FFaker::Lorem::sentence,
         user_id: User.all.sample.id,
-        post_id: Post.all.sample.id
+        post_id: Post.all.first(5).sample.id
       )
       comment.save!
       puts comment.content
