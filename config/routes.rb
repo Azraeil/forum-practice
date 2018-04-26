@@ -32,4 +32,7 @@ Rails.application.routes.draw do
   end
 
   # API路由
+
+  # Feeds
+  resources :feeds, only: [:index]
 end
