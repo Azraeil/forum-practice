@@ -109,8 +109,7 @@ class PostsController < ApplicationController
       redirect_to post_path(@post.id)
     else
       # 文章存成草稿就導向到 users#draft
-      # dev 先導向到 users#show
-      redirect_to user_path(current_user.id)
+      redirect_to draft_user_path(current_user.id)
     end
   end
 end

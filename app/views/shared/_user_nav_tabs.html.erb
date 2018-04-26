@@ -8,9 +8,13 @@
   <li class="nav-item">
     <%= link_to "My Collect#dev", root_path, class:"nav-link" %>
   </li>
+  
+  <% if current_user == @user %>
   <li class="nav-item">
     <%= link_to "My Draft", draft_user_path(@user.id), class: "nav-link #{ 'active' if current_page?(draft_user_path(@user.id)) }" %>
   </li>
+  <% end %>
+
   <li class="nav-item">
     <%= link_to "My Friend#dev", root_path, class:"nav-link" %>
   </li>

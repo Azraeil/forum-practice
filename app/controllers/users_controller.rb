@@ -26,14 +26,18 @@ class UsersController < ApplicationController
     end
   end
 
+  # "My Draft" page
   def draft
     # set_user
-    @posts = @user.posts.where(status: "draft")
+
+    if current_user == @user
+      @posts = @user.posts.where(status: "draft")
+    end
   end
 
   def comment
     # set_user
-    
+
     @comments = @user.comments
   end
 
