@@ -25,6 +25,7 @@ namespace :dev do
       post = Post.new(
         title: "About " + FFaker::Name::first_name,
         content: FFaker::Lorem::sentence,
+        file: "https://picsum.photos/300/300/?random",
         who_can_see: "All",
         status: "publish",
         # for FK category_id
