@@ -20,12 +20,13 @@ namespace :dev do
 
   task fake_post: :environment do
     Post.destroy_all
-    10.times do |i|
+    20.times do |i|
 
       post = Post.new(
         title: "About " + FFaker::Name::first_name,
         content: FFaker::Lorem::sentence,
         who_can_see: "All",
+        status: "publish",
         # for FK category_id
         category_id: Category.all.sample.id,
 

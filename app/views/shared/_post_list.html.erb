@@ -17,7 +17,7 @@
   <thead>
     <tr>
       <th scope="col">Replies count</th>
-      <th scope="col-md-auto">Title</th>
+      <th scope="col">Title</th>
       <th scope="col">Last replied at</th>
       <th scope="col">Viewed count</th>
     </tr>
@@ -28,7 +28,7 @@
         <!-- <th scope="row">1</th> -->
         <th>#Replies_count</th>
         <td><%= link_to post.title, post_path(post.id) %></td>
-        <td>#last_replt_time</td>
+        <td><%= post.comments.last.created_at.strftime("%Y-%m-%d") %></td>
         <td>#viewed_count</td>
       </tr>
     <% end %>
