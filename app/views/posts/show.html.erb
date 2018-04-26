@@ -8,11 +8,24 @@
     </div>
   </div>
   <hr>
-    <%= render partial: "shared/post_content", locals: {post_object: @post} %>
 
-    <% if @comments != nil %>
-      <% @comments.each do |comment| %>
-        <%= render partial: "shared/post_content", locals: {post_object: comment} %>
-      <% end %>
+  <%= render partial: "shared/post_content", locals: {post_object: @post} %>
+
+  <% if @comments != nil %>
+    <% @comments.each do |comment| %>
+      <%= render partial: "shared/comment_content", locals: {comment: comment} %>
     <% end %>
+  <% end %>
+
+  <!-- 輸入回覆內容 -->
+  <%= form_for [@post, @comment] do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, placeholder: "Add content?", class: "form-control" %>
+    </div>
+
+    <div class="form-group float-right">
+      <%= f.submit "Reply", class: "btn btn-primary" %>
+      <%= f.button "Clear", type: :reset, class: "btn btn-light" %>
+    </div>
+  <% end %>
 </div>
