@@ -20,7 +20,7 @@ namespace :dev do
 
   task fake_post: :environment do
     Post.destroy_all
-    20.times do |i|
+    41.times do |i|
 
       post = Post.new(
         title: "About " + FFaker::Name::first_name,
@@ -44,7 +44,7 @@ namespace :dev do
   task fake_comment: :environment do
     Comment.destroy_all
 
-    50.times do |i|
+    80.times do |i|
       comment = Comment.new(
         content: FFaker::Lorem::sentence,
         user_id: User.all.sample.id,
