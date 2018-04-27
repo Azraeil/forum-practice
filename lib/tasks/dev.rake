@@ -57,4 +57,19 @@ namespace :dev do
     puts "Fake comments created!"
   end
 
+  task fake_collect: :environment do
+    Collect.destroy_all
+
+    100.times do |i|
+      collect = Collect.new(
+        user_id: User.all.sample.id,
+        post_id: Post.all.first(10).sample.id
+      )
+      collect.save
+      puts collect
+    end
+
+    puts "Fake collects created!!"
+  end
+
 end
