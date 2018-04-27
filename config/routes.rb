@@ -15,10 +15,18 @@ Rails.application.routes.draw do
   # 文章
   resources :posts do
     resources :comments, only: [:create, :destroy, :edit, :update]
+
+    # 文章收藏記錄
+    member do
+      post :collect
+      delete :uncollect
+    end
   end
 
   # posts#index 的文章分類按鈕
   resources :categories, only: [:show]
+
+
 
   # 好友關係
 
