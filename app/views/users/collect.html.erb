@@ -1,0 +1,35 @@
+<div class="container">
+  <br>
+  <%= render partial: "shared/user_content" %>
+
+  <br>
+  <%= render partial: "shared/user_nav_tabs" %>
+
+  <br>
+
+  <!-- 文章列表 -->
+  <div class="text-center">
+
+  </div>
+  <% @collects.each do |collect| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+          <div class="row">
+            <div class="col-9">
+              <%= link_to collect.post.title, post_path(collect.post) %>
+            </div>
+            <div class="col-3">
+              <% if current_user.is_collected?(collect.post) %>
+              <%= link_to "Uncollect", uncollect_post_path(collect.post.id), method: :delete, class: "btn btn-info", data: { disable_with: "Waiting..." } %>
+              <% else %>
+              <%= link_to "Collect", collect_post_path(collect.post.id), method: :post, class: "btn btn-primary", data: { disable_with: "Waiting..." } %>
+              <% end %>
+            </div>
+          </div>
+        </h5>
+
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       get :draft
       get :comment
+      get :collect
     end
   end
 
@@ -25,8 +26,6 @@ Rails.application.routes.draw do
 
   # posts#index 的文章分類按鈕
   resources :categories, only: [:show]
-
-
 
   # 好友關係
 

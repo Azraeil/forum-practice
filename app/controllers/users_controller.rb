@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
+  
   def show
     # set_user
 
@@ -39,6 +40,12 @@ class UsersController < ApplicationController
     # set_user
 
     @comments = @user.comments
+  end
+
+  def collect
+    # set_user
+
+    @collects = @user.collects
   end
 
   private
