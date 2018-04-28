@@ -1,7 +1,6 @@
 class Api::V1::PostsController < ApiController
   # 加入認證程序，使用者需登入才能瀏覽網站
-  # before_action :authenticate_user!
-  # skip_before_action :index
+  before_action :authenticate_user!, except: :index
   def index
     @posts = Post.all
 

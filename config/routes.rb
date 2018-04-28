@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   # API路由
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resources :posts, except: [:show]
+      resources :posts, except: [:edit]
     end
   end
 
