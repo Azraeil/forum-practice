@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # 依需求，瀏覽論壇首頁時，不用登入
   skip_before_action :authenticate_user!, only: [:index]
 
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :collect, :uncollect]
 
   def index
     @posts = Post.where(status: "publish").page(params[:page]).per(20)
@@ -80,6 +80,33 @@ class PostsController < ApplicationController
         redirect_to post_path(@post.id)
       end
     end
+  end
+
+  def collect
+    # set_post
+
+    @collect = Collect.create!(
+      user_id: current_user.id,
+      post_id: @post.id
+    )
+
+    redirect_back(fallback_location: post_path(@post.id))
+  end
+
+  def uncollect
+    # set_post
+
+    puts current_user
+    puts @post
+
+    collect = Collect.where(
+      user_id: current_user.id,
+      post_id: @post.id
+    )
+
+    collect.destroy_all
+
+    redirect_back(fallback_location: post_path(@post.id))
   end
 
   private

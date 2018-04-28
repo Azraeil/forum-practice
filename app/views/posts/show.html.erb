@@ -3,7 +3,12 @@
     <h3><%= @post.title %></h3>
 
     <div class="ml-auto">
-      <%= link_to "Collect#dev", root_path, class: "btn btn-primary" %>
+      <% if current_user.is_collected?(@post) %>
+        <%= link_to "Uncollect", uncollect_post_path(@post.id), method: :delete, class: "btn btn-info", data: { disable_with: "Waiting..." } %>
+      <% else %>
+        <%= link_to "Collect", collect_post_path(@post.id), method: :post, class: "btn btn-primary", data: { disable_with: "Waiting..." } %>
+      <% end %>
+
       <button type="button" name="button" class="btn btn-info">Comment#dev</button>
     </div>
   </div>

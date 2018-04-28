@@ -19,5 +19,9 @@ class User < ApplicationRecord
   has_many :collects
 
   # 使用者有很多在收藏記錄裡的的文章
-  has_many :colleted_posts, through: :collects, source: :post
+  has_many :collected_posts, through: :collects, source: :post
+
+  def is_collected?(post)
+    self.collected_posts.include?(post)
+  end
 end
