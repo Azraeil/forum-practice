@@ -35,7 +35,7 @@ class Api::V1::PostsController < ApiController
           date: @post.created_at.strftime("%Y-%m-%d"),
           content: @post.content,
           file: @post.file,
-          who_can_see: post.who_can_see,
+          who_can_see: @post.who_can_see,
           user_id: @post.user_id,
           category_id: @post.category_id
         }
