@@ -40,6 +40,11 @@ Rails.application.routes.draw do
   end
 
   # API路由
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :posts, except: [:show]
+    end
+  end
 
   # Feeds
   resources :feeds, only: [:index]
