@@ -9,7 +9,7 @@
         <%= link_to "Collect", collect_post_path(@post.id), method: :post, class: "btn btn-primary", data: { disable_with: "Waiting..." } %>
       <% end %>
 
-      <button type="button" name="button" class="btn btn-info">Comment#dev</button>
+      <a href="#comments" class="btn btn-primary">Comment</a>
     </div>
   </div>
   <hr>
@@ -29,7 +29,7 @@
 
   <!-- 輸入回覆內容 -->
   <%= form_for [@post, @comment] do |f| %>
-    <div class="form-group">
+    <div class="form-group" id="comments">
       <%= f.text_area :content, placeholder: "Add some comment?", class: "form-control" %>
     </div>
 
