@@ -42,6 +42,10 @@ Rails.application.routes.draw do
   # API路由
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
+
+      post "/login" => "auth#login"
+      post "/logout" => "auth#logout"
+
       resources :posts, except: [:edit]
     end
   end
