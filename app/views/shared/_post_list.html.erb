@@ -21,7 +21,7 @@
       </th>
       <th scope="col">Title</th>
       <th class="text-center" scope="col"><%= sort_link(@ransack, :comments_created_at, "Last replied at", default_order: :desc) %></th>
-      <th class="text-center" scope="col">Viewed count</th>
+      <th class="text-center" scope="col"><%= sort_link(@ransack, :viewed_count, "Viewed count", default_order: :desc) %></th>
     </tr>
   </thead>
   <tbody>
