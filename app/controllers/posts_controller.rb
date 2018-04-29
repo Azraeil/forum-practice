@@ -43,6 +43,8 @@ class PostsController < ApplicationController
     # 新增回覆
     @comment = Comment.new
 
+    # 增加瀏覽次數
+    @post.increase_visit
   end
 
   def edit
