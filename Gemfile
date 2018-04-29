@@ -72,3 +72,6 @@ gem 'ffaker'
 
 # for paginate
 gem 'kaminari'
+
+# for sort and query
+gem 'ransack'
