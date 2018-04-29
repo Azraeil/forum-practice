@@ -5,10 +5,14 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :collect, :uncollect]
 
   def index
-    @posts = Post.where(status: "publish").page(params[:page]).per(20)
-
     # 顯示文章分類按鈕
     @categories = Category.all
+
+    # 透過 ransack 排序跟搜尋
+    @ransack = Post.where(status: "publish").ransack(params[:q])
+
+    # dev 待處理，文章觀看權限的部分
+    @posts = @ransack.result(distinct: true).page(params[:page]).per(20)
   end
 
   def new
