@@ -20,19 +20,21 @@ namespace :dev do
 
   task fake_post: :environment do
     Post.destroy_all
-    41.times do |i|
+    50.times do |i|
 
       post = Post.new(
-        title: "About " + FFaker::Name::first_name,
-        content: FFaker::Lorem::sentence,
+        title: FFaker::Lorem::sentence(1),
+        content: FFaker::Lorem::sentence(30),
         file: "https://picsum.photos/300/300/?random",
         who_can_see: "All",
         status: "publish",
         # for FK category_id
-        category_id: Category.all.sample.id,
+        category_ids: Category.all.sample.id,
 
         # for FK user_id
-        user_id: User.all.sample.id
+        user_id: User.all.sample.id,
+
+        viewed_count: rand(1..50)
       )
 
       post.save!
@@ -44,11 +46,11 @@ namespace :dev do
   task fake_comment: :environment do
     Comment.destroy_all
 
-    100.times do |i|
+    800.times do |i|
       comment = Comment.new(
-        content: FFaker::Lorem::sentence,
+        content: FFaker::Lorem::sentence(20),
         user_id: User.all.sample.id,
-        post_id: Post.all.first(5).sample.id
+        post_id: Post.all.order(id: :desc).first(40).sample.id
       )
       comment.save!
       puts comment.content
