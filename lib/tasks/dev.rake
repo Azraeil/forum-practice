@@ -8,7 +8,7 @@ namespace :dev do
         name: FFaker::Name::first_name,
         email: FFaker::Internet.email,
         password: "12345678",
-        introduction: FFaker::Lorem::sentence(3),
+        introduction: FFaker::Lorem::sentence(10),
         avatar: "https://picsum.photos/300/300/?random"
       )
 
@@ -24,7 +24,7 @@ namespace :dev do
 
       post = Post.new(
         title: FFaker::Lorem::sentence(1),
-        content: FFaker::Lorem::sentence(30),
+        content: FFaker::Lorem::sentence(20),
         file: "https://picsum.photos/300/300/?random",
         who_can_see: "All",
         status: "publish",
