@@ -24,7 +24,7 @@ namespace :dev do
 
       post = Post.new(
         title: FFaker::Lorem::sentence(1),
-        content: FFaker::Lorem::sentence(20),
+        content: FFaker::Lorem::sentence(15),
         file: "https://picsum.photos/300/300/?random",
         who_can_see: "All",
         status: "publish",
@@ -48,7 +48,7 @@ namespace :dev do
 
     800.times do |i|
       comment = Comment.new(
-        content: FFaker::Lorem::sentence(20),
+        content: FFaker::Lorem::sentence(15),
         user_id: User.all.sample.id,
         post_id: Post.all.order(id: :desc).first(40).sample.id
       )
