@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @categories = Category.all
 
     # 透過 ransack 排序跟搜尋
-    @ransack = Post.where(status: "publish").ransack(params[:q])
+    @ransack = Post.where(status: "publish").order(id: :desc).ransack(params[:q])
 
     # dev 待處理，文章觀看權限的部分
     @posts = @ransack.result(distinct: true).page(params[:page]).per(20)
@@ -121,7 +121,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :file, :who_can_see, :category_id)
+    params.require(:post).permit(:title, :content, :file, :who_can_see, :category_ids => [])
   end
 
   def post_status_params

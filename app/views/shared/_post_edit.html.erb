@@ -45,16 +45,16 @@
       Category
     </legend>
     <div class="col-sm-10">
-      <% Category.all.each do |category| %>
+      <%# Category.all.each do |category| %>
         <div class="form-check form-check-inline">
-          <%= radio_button :post, :category_id, category.id, { class: "form-check-input" } %>
-
-          <label class="form-check-label"
-          for="<%= "post_category_id_" + category.id.to_s %>">
-            <%= category.name %>
-          </label>
+          <%= f.collection_check_boxes :category_ids,  Category.all, :id, :name do |cb| %>
+            <div class="m-1">
+              <%= cb.check_box class: "form-check-input" %>
+              <%= cb.label class: "form-check-label "%>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      <%# end %>
     </div>
   </div>
 </div>
