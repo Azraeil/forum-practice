@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user
-  
+
   def show
     # set_user
 
-    @posts = @user.posts.where(status: "publish")
+    @posts = @user.posts.where(status: "publish").order(id: :desc)
   end
 
   def edit
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     # set_user
 
     if current_user == @user
-      @posts = @user.posts.where(status: "draft")
+      @posts = @user.posts.where(status: "draft").order(id: :desc)
     end
   end
 
