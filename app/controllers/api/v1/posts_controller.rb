@@ -13,8 +13,7 @@ class Api::V1::PostsController < ApiController
           content: post.content,
           file: post.file,
           who_can_see: post.who_can_see,
-          user_id: post.user_id,
-          category_id: post.category_id
+          user_id: post.user_id
         }
       end
     }
@@ -36,8 +35,7 @@ class Api::V1::PostsController < ApiController
           content: @post.content,
           file: @post.file,
           who_can_see: @post.who_can_see,
-          user_id: @post.user_id,
-          category_id: @post.category_id
+          user_id: @post.user_id
         }
     end
   end
@@ -83,6 +81,6 @@ class Api::V1::PostsController < ApiController
 
   private
   def post_params
-    params.permit(:title, :content, :file, :who_can_see, :category_id, :user_id)
+    params.permit(:title, :content, :file, :who_can_see, :category_ids, :user_id)
   end
 end
