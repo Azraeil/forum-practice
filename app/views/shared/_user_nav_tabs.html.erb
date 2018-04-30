@@ -15,11 +15,4 @@
     <%= link_to "My Draft", draft_user_path(@user.id), class: "nav-link #{ 'active' if current_page?(draft_user_path(@user.id)) }" %>
   </li>
   <% end %>
-
-  <li class="nav-item">
-    <%= link_to "My Friend#dev", root_path, class:"nav-link" %>
-  </li>
-  <!-- add active class example -->
-  <%#= link_to "User List", admin_users_path,
-    class: "nav-link #{ 'active' if current_page?(admin_users_path) }" %>
 </ul>
