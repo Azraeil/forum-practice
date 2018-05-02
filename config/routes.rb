@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :draft
       get :comment
       get :collect
+      get :friend
 
       # 好友關係
       post :friend_request
