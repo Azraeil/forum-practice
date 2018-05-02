@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
     if current_user != @user
       # 建立好友邀請
-      @friend_request = Friend.new(
+      @friend_request = Friendship.new(
         user_id: current_user.id,
         friend_id: @user.id
       )
@@ -66,8 +66,8 @@ class UsersController < ApplicationController
 
   def friend_accept
     # set_user
-    # 此時的 @user 是收到好友邀請的人
-    @friend_request = Friend.find_by(user_id: current_user.id, friend_id: @user.id)
+
+    @friend_request = Friendship.find(params[:id])
 
     @friend_request.status = "accept"
     @friend_request.save
@@ -77,13 +77,23 @@ class UsersController < ApplicationController
 
   def friend_ignore
     # set_user
-    # 此時的 @user 是收到好友邀請的人
-    @friend_request = Friend.find_by(user_id: current_user.id, friend_id: @user.id)
-
+    @friend_request = Friendship.find(params[:id])
+    
     @friend_request.status = "ignore"
     @friend_request.save
 
     redirect_back(fallback_location: user_path(@user.id))
+  end
+
+  def friend
+    # set_user
+
+    # 來自其他使用者的好友邀請，好友發起人： user_id
+    @wait_for_responses = Friendship.where(user_id: @user.id, status: "wait")
+
+    @requests = Friendship.where(friend_id: @user.id, status: "wait")
+
+    @friendships = Friendship.where(user_id: @user.id, status: "accept").or(Friendship.where(friend_id: @user.id, status: "accept"))
   end
 
   private

@@ -9,7 +9,7 @@
           <%= post_object.user.name %>
         </div>
 
-        <%= link_to "Add Friend", friend_request_user_path(post_object.user), method: :post, class: "btn btn-sm btn-dark" %>
+        <%= render partial: "shared/friendship_button", locals: {user: post_object.user} %>
       </div>
     <% end %>
   </div>

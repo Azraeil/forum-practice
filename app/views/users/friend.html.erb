@@ -2,21 +2,56 @@
   <br>
   <%= render partial: "shared/user_content" %>
 
-  <% if current_user != @user %>
-    <%= link_to "Add Friend", friend_request_user_path(post_object.user), method: :post, class: "btn btn-sm btn-dark" %>
-  <% end %>
-
   <br>
   <%= render partial: "shared/user_nav_tabs" %>
 
   <br>
 
   <div class="card">
-    <h5 class="card-header">Featured</h5>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!-- 顯示收到 @user 送出的好友申請並等待回覆的使用者 -->
+    <h5 class="card-header text-center">Waiting for response</h5>
+    <div class="card-body row">
+      <% @wait_for_responses.each do |response| %>
+      <span class="card-text text-center p-1">
+        <%= filestack_image response.friend.avatar, transform: filestack_transform.resize(width:70, height:70) if response.friend.avatar %>
+        <h5><%= response.friend.name %></h5>
+      </span>
+      <% end %>
+    </div>
+
+    <!-- 顯示發送邀請給 @user 的使用者 -->
+    <h5 class="card-header text-center">Friend Request</h5>
+    <div class="card-body row">
+      <% @requests.each do |request| %>
+      <span class="card-text text-center p-1">
+        <%= filestack_image request.user.avatar, transform: filestack_transform.resize(width:70, height:70) if request.user.avatar %>
+        <h5><%= request.user.name %></h5>
+
+        <% if current_user == @user %>
+          <%= link_to "Accept", friend_accept_user_path(request.id), method: :post, class: "btn btn-sm btn-primary d-block mb-1" %>
+          <%= link_to "Ignore", friend_ignore_user_path(request.id), method: :post, class: "btn btn-sm btn-primary d-block" %>
+        <% end %>
+
+      </span>
+      <% end %>
+    </div>
+
+    <!-- 顯示 @user 的好友清單 -->
+    <h5 class="card-header text-center">Friend List</h5>
+    <div class="card-body row">
+      <% @friendships.each do |friendship| %>
+      <!-- 辨識好友 -->
+      <% if @user != friendship.user %>
+        <% friend = friendship.user %>
+      <% else %>
+        <% friend = friendship.friend %>
+      <% end %>
+      <span class="card-text text-center p-1">
+        <%= filestack_image friend.avatar, transform: filestack_transform.resize(width:70, height:70) if friend.avatar %>
+        <h5><%= friend.name %></h5>
+      </span>
+      <% end %>
     </div>
   </div>
+
 </div>

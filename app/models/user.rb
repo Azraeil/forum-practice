@@ -16,6 +16,9 @@ class User < ApplicationRecord
   # 使用者有很多在收藏記錄裡的的文章
   has_many :collected_posts, through: :collects, source: :post
 
+  # 好友與好友關係
+  has_many :friendships, dependent: :destroy
+
   # 檢查是否爲網站管理員
   def is_admin?
    if self.role == "Admin"
@@ -29,5 +32,21 @@ class User < ApplicationRecord
 
   def generate_authentication_token
     self.authentication_token = Devise.friendly_token
+  end
+
+  def friend?(user)
+    # 判斷兩方是否有好友邀請記錄
+    friendship_record = Friendship.where(user_id: user.id, friend_id: self.id).or(Friendship.where(user_id: self.id, friend_id: user.id))
+    if friendship_record.any?
+      # 有好友記錄
+      if friendship_record.first.status == "accept"
+        return "friend"
+      else
+        return "exist"
+      end
+    else
+      # 沒有好友記錄
+      return "none"
+    end
   end
 end
