@@ -4,9 +4,12 @@
     <%= link_to user_path(post_object.user.id) do %>
       <div class="text-center">
         <%= filestack_image post_object.user.avatar, transform: filestack_transform.resize(width:100, height:100), class:"mt-2" if post_object.user.avatar %>
-      <div>
+
+        <div>
           <%= post_object.user.name %>
         </div>
+
+        <%= link_to "Add Friend", friend_request_user_path(post_object.user), method: :post, class: "btn btn-sm btn-light" %>
       </div>
     <% end %>
   </div>

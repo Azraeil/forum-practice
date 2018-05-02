@@ -48,6 +48,44 @@ class UsersController < ApplicationController
     @collects = @user.collects
   end
 
+  def friend_request
+    # set_user
+
+    if current_user != @user
+      # 建立好友邀請
+      @friend_request = Friend.new(
+        user_id: current_user.id,
+        friend_id: @user.id
+      )
+
+      @friend_request.save
+    end
+
+    redirect_back(fallback_location: user_path(@user.id))
+  end
+
+  def friend_accept
+    # set_user
+    # 此時的 @user 是收到好友邀請的人
+    @friend_request = Friend.find_by(user_id: current_user.id, friend_id: @user.id)
+
+    @friend_request.status = "accept"
+    @friend_request.save
+
+    redirect_back(fallback_location: user_path(@user.id))
+  end
+
+  def friend_ignore
+    # set_user
+    # 此時的 @user 是收到好友邀請的人
+    @friend_request = Friend.find_by(user_id: current_user.id, friend_id: @user.id)
+
+    @friend_request.status = "ignore"
+    @friend_request.save
+
+    redirect_back(fallback_location: user_path(@user.id))
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
