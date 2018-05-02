@@ -10,6 +10,11 @@ Rails.application.routes.draw do
       get :draft
       get :comment
       get :collect
+
+      # 好友關係
+      post :friend_request
+      post :friend_accept
+      post :friend_ignore
     end
   end
 
@@ -26,8 +31,6 @@ Rails.application.routes.draw do
 
   # posts#index 的文章分類按鈕
   resources :categories, only: [:show]
-
-  # 好友關係
 
   ## 後台路由
   # 進入後台必須有管理員 (admin) 權限
