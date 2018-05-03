@@ -4,6 +4,9 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
 
+    # 權限檢查
+    permission_check(@post, current_user)
+
     if @comment = Comment.create!(
       user_id: current_user.id,
       post_id: params[:post_id],
@@ -34,10 +37,11 @@ class CommentsController < ApplicationController
 
   def edit
     # set_comment
+    if current_user == @comment.user
+      @post = Post.find(params[:post_id])
 
-    @post = Post.find(params[:post_id])
-
-    @comments = @post.comments
+      @comments = @post.comments
+    end
   end
 
   def update
@@ -62,5 +66,15 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def permission_check(post, current_user)
+    if post.who_can_see == "All" ||
+      post.who_can_see == "Friend" && current_user.friend?(post.user) == "accept" ||
+      post.user == current_user
+      # allow to access
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 end

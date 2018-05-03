@@ -37,6 +37,9 @@ class PostsController < ApplicationController
   def show
     # set_post
 
+    # 觀看權限檢查
+    permission_check(@post, current_user)
+
     # 顯示回覆
     @comments = @post.comments.page(params[:page]).per(20)
 
@@ -143,6 +146,16 @@ class PostsController < ApplicationController
     else
       # 文章存成草稿就導向到 users#draft
       redirect_to draft_user_path(current_user.id)
+    end
+  end
+
+  def permission_check(post, current_user)
+    if post.who_can_see == "All" ||
+      post.who_can_see == "Friend" && current_user.friend?(post.user) == "accept" ||
+      post.user == current_user
+      # allow to access
+    else
+      redirect_back(fallback_location: root_path)
     end
   end
 end
