@@ -26,7 +26,9 @@
   </thead>
   <tbody>
     <% @posts.each do |post| %>
-      <% if post.user == current_user || post.who_can_see == "All" %>
+      <% if post.who_can_see == "All" ||
+        post.who_can_see == "Friend" && current_user.friend?(post.user) == "accept" ||
+         post.user == current_user %>
       <tr data-link="<%= post_path(post.id) %>">
         <!-- <th scope="row">1</th> -->
         <th class="text-center"><%= post.comments_count %></th>
