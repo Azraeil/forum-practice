@@ -27,6 +27,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <% if post.who_can_see == "All" ||
+        current_user != nil &&
         post.who_can_see == "Friend" && current_user.friend?(post.user) == "accept" ||
          post.user == current_user %>
       <tr data-link="<%= post_path(post.id) %>">
