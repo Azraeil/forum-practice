@@ -41,6 +41,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :update]
     # 後台可以 CRUD `文章的分類` (但不能刪除已經有被使用的分類)
     resources :categories
+
+    # 後台首頁
+    root "users#index"
   end
 
   # API路由
