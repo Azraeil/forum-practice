@@ -151,7 +151,7 @@ class PostsController < ApplicationController
 
   def permission_check(post, current_user)
     if post.who_can_see == "All" ||
-      post.who_can_see == "Friend" && current_user.friend?(post.user) == "accept" ||
+      post.who_can_see == "Friend" && current_user.friend?(post.user) == "friend" ||
       post.user == current_user
       # allow to access
     else
