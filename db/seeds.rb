@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create two admin users
+User.destroy_all
+
 admin = User.new(
   name: "Administrator",
   email: "admin@test.com",

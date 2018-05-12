@@ -12,12 +12,13 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆
   validates_uniqueness_of :name
 
-  has_many :posts
+  # 刪除使用者時，一併將該使用者的文章刪除
+  has_many :posts, dependent: :destroy
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   # 使用者有很多收藏文章的記錄
-  has_many :collects
+  has_many :collects, dependent: :destroy
 
   # 使用者有很多在收藏記錄裡的的文章
   has_many :collected_posts, through: :collects, source: :post

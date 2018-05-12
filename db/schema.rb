@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502121729) do
+ActiveRecord::Schema.define(version: 20180512070129) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20180502121729) do
     t.string "last_sign_in_ip"
     t.string "role", default: "Normal", null: false
     t.string "name"
-    t.string "avatar"
+    t.string "avatar", default: "https://picsum.photos/300/300/?random"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "introduction"
