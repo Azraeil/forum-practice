@@ -28,9 +28,9 @@ class User < ApplicationRecord
 
   # 檢查是否爲網站管理員
   def is_admin?
-   if self.role == "Admin"
+    if self.role == "Admin"
       return true
-   end
+    end
   end
 
   def is_collected?(post)
