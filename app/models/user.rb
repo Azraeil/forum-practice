@@ -6,6 +6,12 @@ class User < ApplicationRecord
 
   before_create :generate_authentication_token
 
+  # 讓 name 爲必填欄位
+  validates_presence_of :name
+
+  # 加上驗證 name 不能重覆
+  validates_uniqueness_of :name
+
   has_many :posts
 
   has_many :comments
