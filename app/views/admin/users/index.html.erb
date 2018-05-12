@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <% @users.each do |user| %>
-        <tr>
+        <tr data-link="<%= user_path(user.id) %>">
           <th><%= user.name %></th>
           <td><%= user.email %></td>
           <td>
@@ -29,3 +29,9 @@
   </table>
 
 </div>
+
+<script>
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  })
+</script>

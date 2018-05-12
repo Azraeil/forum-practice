@@ -7,15 +7,15 @@
 
   <div class="form-inline">
     <%= form_for [:admin, @category] do |f| %>
-    <span class="form-group">
-      <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
-    </span>
-    <%= f.submit class: "btn btn-info" %>
-    <% if @category.errors.any? %>
-      <%= @category.errors.full_messages.to_sentence %>
+      <span class="form-group">
+        <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
+      </span>
+      <%= f.submit class: "btn btn-info" %>
+      <% if @category.errors.any? %>
+        <%= @category.errors.full_messages.to_sentence %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
 <hr>
 <table class="table table-dark table-striped table-hover">
@@ -27,7 +27,7 @@
   </thead>
   <tbody>
     <% @categories.each do |category| %>
-      <tr>
+      <tr data-link="<%= category_path(category.id) %>">
         <th scope="row"><%= category.name %></th>
         <td>
           <!-- 因爲要在首頁編輯，所以路徑不是 edit_path，並額外傳入 ID 參數 -->
@@ -40,3 +40,9 @@
 </table>
 
 </div>
+
+<script>
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  })
+</script>
