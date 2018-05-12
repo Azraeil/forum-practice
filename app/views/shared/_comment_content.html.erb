@@ -1,6 +1,7 @@
 <div class="row border mb-1">
   <div class="col-sm-2 text-center">
     <!-- user.avatar, user.name, add_friend button -->
+    <span class="badge badge-pill badge-warning"><%= count.to_s + "樓" %></span>
     <%= link_to user_path(comment.user.id) do %>
       <div class="text-center">
         <%= filestack_image comment.user.avatar, transform: filestack_transform.resize(width:85, height:85), class:"mt-2" if comment.user.avatar %>

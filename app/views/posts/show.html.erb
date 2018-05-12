@@ -18,8 +18,10 @@
 
   <% if @comments != nil %>
     <h4>Comments</h4>
+    <% count = 1 %>
     <% @comments.each do |comment| %>
-      <%= render partial: "shared/comment_content", locals: {comment: comment} %>
+      <%= render partial: "shared/comment_content", locals: {comment: comment, count: count} %>
+      <% count += 1 %>
     <% end %>
   <% end %>
 
