@@ -99,14 +99,10 @@ class PostsController < ApplicationController
       post_id: @post.id
     )
 
-    redirect_back(fallback_location: post_path(@post.id))
   end
 
   def uncollect
     # set_post
-
-    puts current_user
-    puts @post
 
     collect = Collect.where(
       user_id: current_user.id,
@@ -114,8 +110,6 @@ class PostsController < ApplicationController
     )
 
     collect.destroy_all
-
-    redirect_back(fallback_location: post_path(@post.id))
   end
 
   private
