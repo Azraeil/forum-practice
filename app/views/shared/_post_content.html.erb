@@ -1,3 +1,4 @@
+<!-- 作者的資料與文章內容 -->
 <div class="row border mb-1">
   <div class="col-sm-2">
     <!-- user.avatar, user.name, add_friend button -->
@@ -8,8 +9,8 @@
         <div>
           <%= post_object.user.name %>
         </div>
-
-        <%= render partial: "shared/friendship_button", locals: {user: post_object.user} %>
+        <% @user = post_object.user %>
+        <%= render partial: "shared/friendship_button" %>
       </div>
     <% end %>
   </div>

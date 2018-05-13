@@ -61,7 +61,6 @@ class UsersController < ApplicationController
       @friend_request.save
     end
 
-    redirect_back(fallback_location: user_path(@user.id))
   end
 
   def friend_accept
@@ -71,18 +70,15 @@ class UsersController < ApplicationController
 
     @friend_request.status = "accept"
     @friend_request.save
-
-    redirect_back(fallback_location: user_path(@user.id))
   end
 
   def friend_ignore
     # set_user
+
     @friend_request = Friendship.find(params[:id])
-    
+
     @friend_request.status = "ignore"
     @friend_request.save
-
-    redirect_back(fallback_location: user_path(@user.id))
   end
 
   def friend

@@ -1,0 +1,5 @@
+var unable_button = '<%= j render partial: "shared/friendship_button" %>';
+
+$("#friend-btn-<%= @user.id %>").children().remove();
+
+$("#friend-btn-<%= @user.id %>").html(unable_button);
