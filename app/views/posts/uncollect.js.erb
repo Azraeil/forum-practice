@@ -1,3 +1,11 @@
-var collect_button_html = '<%= j render partial: "shared/collect_button" %>'
-$("#uncollect-<%= @post.id %>").parent().prepend(collect_button_html);
-$("#uncollect-<%= @post.id %>").remove();
+var collect_button_html = '<%= j render partial: "shared/collect_button" %>';
+
+var collect_post_object = $("#collect-post-<%= @post.id %>");
+
+// 要用長度判斷該元素是否存在，因爲 jQuery 會回傳 null object
+if ( collect_post_object.length > 0) {
+  collect_post_object.remove();
+} else {
+  $("#uncollect-<%= @post.id %>").parent().prepend(collect_button_html);
+  $("#uncollect-<%= @post.id %>").remove();
+}
