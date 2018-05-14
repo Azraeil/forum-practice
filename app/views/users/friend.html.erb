@@ -27,15 +27,15 @@
     <h5 class="card-header text-center">Friend Request</h5>
     <div class="card-body row">
       <% @requests.each do |request| %>
-      <span class="card-text text-center p-1" id="user-<%= request.user.id %>">
+      <span class="card-text text-center p-1" id="request-<%= request.id %>">
         <%= link_to user_path(request.user) do %>
           <%= filestack_image request.user.avatar, transform: filestack_transform.resize(width:70, height:70) if request.user.avatar && request.user.avatar != "" %>
           <h5><%= request.user.name %></h5>
         <% end %>
 
         <% if current_user == @user %>
-          <%= link_to "Accept", friend_accept_user_path(request.id), method: :post, class: "btn btn-sm btn-primary d-block mb-1" %>
-          <%= link_to "Ignore", friend_ignore_user_path(request.id), method: :post, class: "btn btn-sm btn-primary d-block" %>
+          <%= link_to "Accept", friend_accept_user_path(request.id), method: :post, class: "btn btn-sm btn-primary d-block mb-1", remote: true %>
+          <%= link_to "Ignore", friend_ignore_user_path(request.id), method: :post, class: "btn btn-sm btn-primary d-block", remote: true %>
         <% end %>
 
       </span>
@@ -44,7 +44,7 @@
 
     <!-- 顯示 @user 的好友清單 -->
     <h5 class="card-header text-center">Friend List</h5>
-    <div class="card-body row">
+    <div class="card-body row" id="friend-list">
       <% @friendships.each do |friendship| %>
         <!-- 辨識好友 -->
         <% if @user != friendship.user %>

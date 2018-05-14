@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: [:friend_accept, :friend_ignore]
 
   def show
     # set_user
@@ -64,8 +64,6 @@ class UsersController < ApplicationController
   end
 
   def friend_accept
-    # set_user
-
     @friend_request = Friendship.find(params[:id])
 
     @friend_request.status = "accept"
@@ -73,8 +71,6 @@ class UsersController < ApplicationController
   end
 
   def friend_ignore
-    # set_user
-
     @friend_request = Friendship.find(params[:id])
 
     @friend_request.status = "ignore"

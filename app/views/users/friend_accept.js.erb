@@ -1,0 +1,8 @@
+// 先把按鈕移除
+$("#request-<%= @friend_request.id %>").children(".btn").remove();
+
+// 取出 成爲朋友的使用者資訊
+var friend_user = $("#request-<%= @friend_request.id %>");
+
+// 把使用者資訊移動到 Friend List
+$("#friend-list").append(friend_user);
