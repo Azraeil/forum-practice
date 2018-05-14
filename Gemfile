@@ -85,3 +85,6 @@ gem 'kaminari'
 
 # for sort and query
 gem 'ransack'
+
+# for icons
+gem "font-awesome-rails"
