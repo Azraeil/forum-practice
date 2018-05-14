@@ -1,6 +1,16 @@
 App 部署於 heroku：  
 http://forum-practice.herokuapp.com/
 
+額外安裝的 GEM：
+- devise：使用者登入管理系統
+- bootstrap 4：前端美化
+- filestack-rails：檔案上傳系統
+  - [同學寫的安裝教學](https://medium.com/@op880623/rails-gem-filestack-simple-guide-58c728807a8e)
+- ffaker：測試資料產生器
+- kaminari：分頁系統
+- ransack：排序查詢系統
+- font-awesome-rails：圖示
+
 ## User stories
 ### 使用者認證
 - 使用者可以註冊、登入 (使用 Devise gem)
