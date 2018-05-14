@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-2">
     <h3><%= @post.title %></h3>
 
     <div class="ml-auto">
       <%# render partial: "shared/collect_button" %>
       <%= render partial: "shared/collect_button", locals: { post: @post } %>
 
-      <a href="#comments" class="btn btn-primary">Comment</a>
+      <a href="#comments" class="btn btn-primary"><%= fa_icon "comment" %></a>
     </div>
   </div>
   <hr>

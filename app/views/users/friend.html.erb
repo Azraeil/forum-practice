@@ -34,8 +34,13 @@
         <% end %>
 
         <% if current_user == @user %>
-          <%= link_to "Accept", friend_accept_user_path(request.id), method: :post, class: "btn btn-sm btn-primary d-block mb-1", remote: true %>
-          <%= link_to "Ignore", friend_ignore_user_path(request.id), method: :post, class: "btn btn-sm btn-primary d-block", remote: true %>
+          <%= link_to friend_accept_user_path(request.id), method: :post, class: "btn btn-sm", remote: true do %>
+            <%= fa_icon "check-circle 2x" %>
+          <% end %>
+
+          <%= link_to  friend_ignore_user_path(request.id), method: :post, class: "btn btn-sm", remote: true do %>
+            <%= fa_icon "times-circle 2x" %>
+          <% end %>
         <% end %>
 
       </span>

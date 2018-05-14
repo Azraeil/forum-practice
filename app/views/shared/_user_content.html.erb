@@ -15,7 +15,9 @@
     <br>
     <span  class="float-right">
       <% if current_user == @user %>
-        <%= link_to "Edit", edit_user_path(@user.id), class:"btn btn-primary" %>
+        <%= link_to edit_user_path(@user.id), class:"btn btn-primary" do %>
+          <%= fa_icon "edit 2x" %>
+        <% end %>
       <% end %>
     </span>
   </div>

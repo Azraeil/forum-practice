@@ -38,7 +38,7 @@
               <%= post.comments.last.created_at.strftime("%Y-%m-%d") %>
             <% end %>
           </td>
-          <td class="text-center"><%= post.viewed_count %></td>
+          <td class="text-center"><%= fa_icon "eye", text:  post.viewed_count %></td>
         </tr>
       <% end %>
     <% end %>

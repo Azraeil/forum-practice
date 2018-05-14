@@ -18,7 +18,7 @@
           <td><%= user.email %></td>
           <td>
             <%= form_tag admin_user_path(user.id), method: :patch, class: "form-inline" do %>
-              <%= select_tag :role, options_for_select([["Admin", "Admin"], ["Normal", "Normal"]], user.role), class: "form-control" %>
+              <%= select_tag :role, options_for_select([["Admin", "Admin"], ["Normal", "Normal"]], user.role), class: "form-control mr-1" %>
               <%= submit_tag "Update", class: "btn btn-info" %>
 
             <% end %>
