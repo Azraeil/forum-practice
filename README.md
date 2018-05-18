@@ -1,5 +1,10 @@
 App 部署於 heroku：  
-http://forum-practice.herokuapp.com/
+https://forum-practice.herokuapp.com/
+
+免費 Domain Name 供應商: `freenom`
+https://azraeil.ga
+
+透過 CloudFlare 拿 HTTPS 的 SSL 憑證
 
 額外安裝的 GEM：
 - devise：使用者登入管理系統
