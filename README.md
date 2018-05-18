@@ -1,10 +1,11 @@
-App 部署於 heroku：  
+> 這是 AlphaCamp 線上教材的其中一個大型練習。
+
+- App 部署於 heroku：  
 https://forum-practice.herokuapp.com/
 
-免費 Domain Name 供應商: `freenom`
+- 使用免費 Domain Name 供應商: `freenom`
+- 並透過 CloudFlare 拿 HTTPS 的 SSL 憑證：  
 https://azraeil.ga
-
-透過 CloudFlare 拿 HTTPS 的 SSL 憑證
 
 額外安裝的 GEM：
 - devise：使用者登入管理系統
