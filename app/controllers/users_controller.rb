@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def comment
     # set_user
 
-    @comments = @user.comments
+    @comments = @user.comments.order(id: :desc)
   end
 
   def collect
